@@ -24,10 +24,15 @@ def insert_gk(team: str):
                 .find("span", class_="personCardCell__description")
                 .get_text(strip=True)
             )
+            print(age_text)
             age = (
-                int(re.search(r"\d+", age_text).group())
-                if re.search(r"\d+", age_text)
-                else None
+                0
+                if age_text == ""
+                else (
+                    int(re.search(r"\d+", age_text).group())
+                    if re.search(r"\d+", age_text)
+                    else None
+                )
             )
 
             pj = 0 if gk_td[2].text.strip() == "-" else int(gk_td[2].text.strip())
